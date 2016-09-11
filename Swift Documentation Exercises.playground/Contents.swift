@@ -331,13 +331,14 @@ class Circle: NamedShape {
     }
     
     override func simpleDescription() -> String {
-        return " A round object with the radius of \(radius)"
+        return " A round object with the radius of \(radius) and area of \(area())"
     }
 }
 
 let test2 = Circle(radius: 49, name: "test circle")
 
 test2.area()
+test2.simpleDescription()
 
 
 
