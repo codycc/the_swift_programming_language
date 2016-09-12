@@ -516,6 +516,27 @@ threeOfSpades.fullDeck()
 
 
 
+enum ServerResponse {
+    case result(String,String)
+    case failure(String)
+    case broken(String)
+}
+
+let success = ServerResponse.result("6:00am", "8:09pm")
+let failure = ServerResponse.failure("Out of cheese")
+let broken = ServerResponse.broken("The server is broken at the moment please try again later")
+
+switch success {
+case let .result(sunrise,sunset):
+    print("Sunrise is at \(sunrise) and sunset is at \(sunset)")
+case let .failure(message):
+    print("Failure... \(message)")
+case let .broken(message):
+    print("failure... \(message)")
+}
+
+
+//Protocols
 
 
 
