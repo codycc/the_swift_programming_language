@@ -295,7 +295,7 @@ class NamedShape {
 }
 
 
-
+//SQUARE CLASS
 class Square: NamedShape {
     var sideLength: Double
     
@@ -321,7 +321,7 @@ test.area()
 test.simpleDescription()
 
 
-
+// CIRCLE CLASS
 class Circle: NamedShape {
     var radius: Double
     
@@ -346,7 +346,7 @@ test2.simpleDescription()
 
 
 
-
+//TRIANGLE CLASS
 class EquilateralTriangle: NamedShape {
     var sideLength: Double = 0.0
     
@@ -379,7 +379,7 @@ triangle.perimeter = 9.9
 print(triangle.sideLength)
 
 
-
+//TRIANGLE AND SQUARE CLASS
 class TriangleAndSquare {
     var triangle: EquilateralTriangle {
         willSet {
@@ -410,6 +410,79 @@ print(triangleAndSquare.triangle.sideLength )
 let optionalSquare: Square? = Square(sideLength: 2.5, name: "optional square")
 
 let sideLength = optionalSquare?.sideLength
+
+
+//ENUMERATIONS AND STRUCTURES
+
+enum Rank: Int {
+    case ace = 1
+    case two, three, four, five,six,seven,eight,nine,ten
+    case jack, queen, king
+    func simpleDescription() -> String {
+        switch self {
+        case .ace:
+            return "ace"
+        case .jack:
+            return "jack"
+        case .queen:
+            return "queen"
+        case .king:
+            return "king"
+        default:
+            return String(self.rawValue)
+        }
+    }
+    //Write a function that compares two Rank values by comparing their raw values.
+    func isEqual(secondRank: Rank) -> Bool {
+        return self.rawValue == secondRank.rawValue
+    }
+
+}
+let ace = Rank.ace
+let aceRawValue = ace.rawValue
+
+let jack = Rank.jack
+jack.isEqual(secondRank: ace)
+
+let queen = Rank.queen
+queen.rawValue
+
+if let convertedRank = Rank(rawValue: 3) {
+    let threeDescription = convertedRank.simpleDescription()
+}
+
+enum Suit {
+    case spades, hearts, diamonds,clubs
+    func simpleDescription() -> String {
+        switch self {
+        case .spades:
+            return "Spades"
+        case .hearts:
+            return "hearts"
+        case.diamonds:
+            return "diamonds"
+        case .clubs:
+            return "clubs"
+        }
+    }
+    func color() -> String {
+        switch self {
+        case(.spades),(.clubs):
+            return "Black"
+        case(.hearts),(.diamonds):
+            return "red"
+    }
+    }
+}
+
+let hearts = Suit.hearts
+let heartsDescription = hearts.simpleDescription()
+hearts.color()
+
+let clubs = Suit.clubs
+clubs.color()
+
+
 
 
 
