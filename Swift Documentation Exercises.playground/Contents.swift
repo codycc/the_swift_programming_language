@@ -482,10 +482,37 @@ hearts.color()
 let clubs = Suit.clubs
 clubs.color()
 
+//STRUCTURES
+struct Card {
+    var rank: Rank
+    var suit: Suit
+    
+    func simpleDescription() -> String {
+        return "The \(rank.simpleDescription()) of \(suit.simpleDescription())"
+    }
+    
+    func fullDeck() -> [Card] {
+        let ranks = [Rank.ace, Rank.two, Rank.three, Rank.four, Rank.five, Rank.six, Rank.seven, Rank.eight, Rank.nine, Rank.ten, Rank.jack, Rank.queen, Rank.king]
+        
+        let suits = [Suit.clubs,Suit.hearts,Suit.diamonds,Suit.spades]
+        var deck = [Card]()
+        
+        for suit in suits {
+            for rank in ranks {
+                deck.append(Card(rank: rank, suit: suit))
+            }
+        }
+        return deck
+    }
+}
 
 
 
+let threeOfSpades = Card(rank: .three, suit: .spades)
 
+let threeOfSpadesDescription = threeOfSpades.simpleDescription()
+
+threeOfSpades.fullDeck()
 
 
 
