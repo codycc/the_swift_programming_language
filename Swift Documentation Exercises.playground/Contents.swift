@@ -624,5 +624,53 @@ var double: Double = -12.34
 double.simpleDescription
 double.absoluteValue
 
+let protocolValue: ExampleProtocol = a
+
+print(protocolValue.simpleDescription)
+
+// The anotherProperty was added on top of the protocol uncomment to see the error
+// print(protocolValue.anotherProperty)
+
+
+//ERRORS AND ERROR HANDLING 
+
+enum PrinterError: Error {
+    case outOfPaper
+    case noToner
+    case onFire
+}
+
+func send(job: Int, toPrinter printerName: String) throws -> String {
+    if printerName == "Never has toner" {
+        throw PrinterError.noToner
+    }
+    return "Job Sent"
+}
+
+do {
+    let printerResponse = try send(job: 1040, toPrinter: "Never has toner")
+    print(printerResponse)
+} catch {
+    print(error)
+}
+
+do {
+    let printerResponse = try send(job: 1440, toPrinter: "GutenBerg")
+    print(printerResponse)
+    
+    // to make second catch run
+    throw PrinterError.onFire
+    // to make third catch run
+    throw PrinterError.outOfPaper
+    
+} catch PrinterError.onFire {
+    print("Ill just put this over here, with the rest of the fire")
+} catch let printerError as PrinterError {
+    print("Printer error: \(printerError)")
+} catch {
+    print(error)
+}
+
+
 
 
