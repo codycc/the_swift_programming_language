@@ -671,6 +671,43 @@ do {
     print(error)
 }
 
+let printerSuccess = try? send(job: 1884, toPrinter: "Mergenthaler")
+
+let printerFailure = try? send(job: 1885, toPrinter: "Never has toner")
+
+
+//DEFER
+var fridgeIsOpen = false
+let fridgeContent = ["milk","eggs","leftovers"]
+
+func fridgeContains(_ food: String) -> Bool {
+    fridgeIsOpen = true
+    defer {
+        fridgeIsOpen = false
+    }
+    
+    let result = fridgeContent.contains(food)
+    return result
+}
+
+fridgeContains("banana")
+print(fridgeIsOpen)
+
+
+//GENERICS
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
